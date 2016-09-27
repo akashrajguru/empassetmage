@@ -1,0 +1,95 @@
+swagger: '2.0'
+info:
+  title: SRI ASSET Management API
+  version: "0.1"
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /Emps:
+    get:
+      tags: [Emps]
+      operationId: app.get_emps
+      summary: Get all emplyee records
+      parameters:
+        - name: name
+          in: query
+          type: string
+          pattern: "^[a-zA-Z0-9]*$"
+      responses:
+        200:
+          description: Return records
+          schema:
+            type: array
+            items: 
+              $ref: '#/definitions/Emp'
+  /Emps/{emp_name}:
+    post:
+      tags: [Emps]
+      operationId: app.post_asset
+      summary: Create a New Record for Employee who has taken ASSET
+      parameters:
+        - $ref: '#/parameters/emp_name'
+        - name: emp
+          in: body
+          schema:
+            $ref: '#/definitions/Emp'
+      responses:
+        201:
+          description: New employee record created
+        409:
+          description: Employee record already exists
+
+parameters:
+  emp_name:
+    name: emp_name
+    description: Employee's Unique identifier
+    in: path
+    type: string
+    required: true
+    pattern: "^[a-zA-Z0-9-]+$"
+
+definitions:
+  Emp:
+    type: object
+    required:
+      - device
+      - no_device
+    properties:
+      name:
+        type: string
+        description: Employee's name
+        example: "John"
+        readOnly: true
+      device:
+        type: string
+        description: Device name and model
+        example: Motorola Nexus 6
+        minLength: 1
+        maxLength: 500
+      no_device:
+        type: string
+        description: Number of device taken
+        example: "2"
+        minLength: 1
+        maxLength: 2
+      device_type:
+        type: string
+        description: Device type
+        example: "mobile"
+        minLength: 1
+        maxLength: 50
+      emp_id:
+        type: string
+        description: Employee ID 
+        example: "007828"
+        minLength: 6
+        maxLength: 6
+      taken_at:
+        type: string
+        format: date-time
+        description: Device taken date-time
+        example: "2015-07-07T15:49:51.230+02:00"
+        readOnly: true
+
