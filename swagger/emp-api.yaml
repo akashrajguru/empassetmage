@@ -40,6 +40,32 @@ paths:
           description: New employee record created
         409:
           description: Employee record already exists
+    delete:
+      tags: [Emps]
+      operationId: app.delete_emp
+      summary: Remove employee record
+      parameters:
+        - $ref: '#/parameters/emp_name'
+      responses:
+        204:
+          description: Employee record was deleted
+        404: 
+          description: Employee record does not exist
+    put:
+      tags: [Emps]
+      operationId: app.put_emp
+      summary: Update the employee record
+      parameters:
+        - $ref: '#/parameters/emp_name'
+        - name: emp
+          in: body
+          schema:
+            $ref: '#/definitions/Emp'
+      responses:
+        200:
+          description: Pet updated
+        404:
+          description: Not found
 
 parameters:
   emp_name:
