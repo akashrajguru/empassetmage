@@ -32,7 +32,8 @@ def put_emp(emp_name, emp):
 	emp['name']=emp_name
 	if exists:
 		logging.info('Updating pet %s..', emp_name)
-		EMPS[emp_name].update(emp)
+		EMPS[emp_name].update
+		(emp)
 		return 'Record updated ', 200
 	else:
 		logging.info('Record does not exists %s..', emp_name)
