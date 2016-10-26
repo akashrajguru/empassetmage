@@ -45,6 +45,6 @@ def put_emp(emp_name, emp):
 
 
 if __name__ == '__main__':
-	app = connexion.App(__name__, 9091, specification_dir='swagger/')
+	app = connexion.App(__name__, 9090, specification_dir='swagger/')
 	app.add_api('emp-api.yaml')
 	app.run()

@@ -29,5 +29,9 @@ RUN mkdir empassetmage &&\
 	cd empassetmage &&\
 	mkdir swagger
 
+#Copy fils to folders
+ADD ./app.py /home/myvirtualenv/empassetmage/
+ADD ./swagger/emp-api.yaml /home/myvirtualenv/empassetmage/swagger
+
 CMD python app.py
 
