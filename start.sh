@@ -23,6 +23,7 @@ retfunce(){
 #pgrep supervisord > /dev/null || supervisord
 #supervisorctl update
 exitfunc(){
+	
 	python app.py &
 	echo "application started" 
 }
