@@ -22,11 +22,9 @@ retfunce(){
 # if supervisor already running, 'update' to add the new process
 #pgrep supervisord > /dev/null || supervisord
 #supervisorctl update
-
 exitfunc(){
 	nohup python app.py &
 	echo "application started" 
 }
-
 retfunce
 exitfunc
