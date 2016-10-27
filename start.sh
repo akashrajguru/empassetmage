@@ -24,7 +24,7 @@ retfunce(){
 #supervisorctl update
 exitfunc(){
 
-	python app.py
+	python app.py &
 	echo "application started" 
 }
 retfunce
