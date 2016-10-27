@@ -23,7 +23,8 @@ retfunce(){
 #pgrep supervisord > /dev/null || supervisord
 #supervisorctl update
 exitfunc(){
-	nohup python app.py &
+
+	python app.py &
 	echo "application started" 
 }
 retfunce
