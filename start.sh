@@ -26,7 +26,6 @@ exitfunc(){
 
 	python app.py &
 	echo "application started" 
-	exit 0
 }
 retfunce
 exitfunc
